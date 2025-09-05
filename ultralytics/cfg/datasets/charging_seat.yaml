@@ -8,15 +8,13 @@
 #     └── VOC  ← downloads here (2.8 GB)
 data_type: voc
 # Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
-path: "/home/jiangziben/data/people_and_face_detection/"
+path: "/home/jiangziben/data/export/charging_seat_splited"
 train: # train images (relative to 'path')  16551 images
-  - VOC/VOC2007/JPEGImages
-  - VOC/VOC2012/JPEGImages
-  - COCO/JPEGImages
+  - train
 val: # val images (relative to 'path')  4952 images
-  - VOC/VOC2012/JPEGImages
+  - val
 test: # test images (optional)
 # Classes
 names:
-  0: person
-  1: face
+  0: charging_seat
+  1: charging_gun

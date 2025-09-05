@@ -29,7 +29,8 @@ def split_dataset(dataset_dir, output_dir, train_ratio=0.8, val_ratio=0.1, test_
 
     train_files = img_files[:train_count]
     val_files = img_files[train_count:train_count + val_count]
-    test_files = img_files[train_count + val_count:]
+    if test_ratio > 0:
+        test_files = img_files[train_count + val_count:]
 
     # 创建输出目录
     for split in ['train', 'val', 'test']:
@@ -60,7 +61,8 @@ def split_dataset(dataset_dir, output_dir, train_ratio=0.8, val_ratio=0.1, test_
 
     copy_files(train_files, 'train')
     copy_files(val_files, 'val')
-    copy_files(test_files, 'test')
+    if test_ratio > 0:
+        copy_files(test_files, 'test')
 
     print(f"数据集已划分完成：训练集 {len(train_files)} 张，验证集 {len(val_files)} 张，测试集 {len(test_files)} 张。")
 
@@ -70,7 +72,7 @@ if __name__ == "__main__":
     parser.add_argument('--dataset_dir', type=str, required=True, help="原始 YOLO 数据集目录")
     parser.add_argument('--output_dir', type=str, required=True, help="划分后数据集的输出目录")
     parser.add_argument('--train_ratio', type=float, default=0.8, help="训练集比例")
-    parser.add_argument('--val_ratio', type=float, default=0.1, help="验证集比例")
+    parser.add_argument('--val_ratio', type=float, default=0.2, help="验证集比例")
     
     args = parser.parse_args()
 
