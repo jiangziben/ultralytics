@@ -31,6 +31,8 @@ def split_dataset(dataset_dir, output_dir, train_ratio=0.8, val_ratio=0.1, test_
     val_files = img_files[train_count:train_count + val_count]
     if test_ratio > 0:
         test_files = img_files[train_count + val_count:]
+    else:
+        test_files = []
 
     # 创建输出目录
     for split in ['train', 'val', 'test']:
